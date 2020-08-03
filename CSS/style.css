@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3f2860;
+    border: 0;
+}
+
+html, body, div, img{
+    height: 100%;
+    margin: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    border-radius: 7px;
+    border: 2px solid #7e93be;
+ }
+
+ .container {
+    background-color: #3f2860;
+    border: 0;
+    min-height: 100%;
+ }
+
+ .nav-bar{
+    height: 72px;
+    background-color: #3f2860;
+    border: 1px solid #7e93be;
+    border-radius: 7px;
+    margin: 3px;
+ }
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.title {
+    margin: 0 auto 0 0;
+    padding-left: 10px;
+    color: #ef6d3b;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
+.menu {
+    margin: 2px -10px 0 0;
+    list-style: none;
+    color: #ef6d3b;
+}
+
+.menu li {
+    display: inline-block;
+    padding: 3px 18px;
+    border: 1px solid rgb(94, 76, 224);
+    border-radius: 7px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #ef6d3b;
+}
+
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    height: 520px;
+    margin: 3px;
+}
+
+.title-shoes {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #90c5a9;
+    margin: 3px;
+}
+
+.title-shoes h2 {
+    margin: 0;
+    text-align: center;
+    color: #ef6d3b;
+}
+
+.products-shoes {
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    background-color: #90c5a9;
+}
+
+.products-shoes div {
+    margin: 12px 0;
+    background-color: #7a9a95;
+    height: 380px;
+    border: 0;
+}
+
+.products-shoes img {
+    flex-basis: 100%;
+    width: 310px;
+    height: 300px;
+    border: 0;
+}
+
+.products-shoes h2 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 3s0px;
+    color: #bed7d1;
+}
+
+.black-leather {
+    flex-direction: row;
+    display: inline;
+    border: 0;
+}
+
+.products-shoes p {
+    float: left;
+    margin: 10px 0 0 7px;
+    background-color: #fa8b60;
+    color: #bed7d1;
+    padding: 6px;
+    font-size: 12px;
+}
+
+.products-shoes a {
+    float: right;
+    margin: 10px 10px 20px 0;
+    padding: 5px 18px;
+    color: white;
+    background-color: #ef6d3b;
+    font-size: 15px;
+}
+
+.logos {
+    background-color: #3f2860;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 120px;
+}
+
+svg {
+    fill: #fa8b60;
+    height: 35px;
+    width: 35px;
+    margin: 40px 100px;
+}
+
+.logos img {
+    border: 0;
+    filter: invert(85%) sepia(34%) saturate(5193%) hue-rotate(316deg) brightness(98%) contrast(101%);
+    height: 35px;
+    width: 35px;
+    margin: 40px 100px;
+}
+
+
+
+
+
+
+
+
