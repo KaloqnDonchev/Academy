@@ -147,6 +147,7 @@ a:link, a:visited {
     flex-wrap: wrap;
     flex-direction: row;
     height: 120px;
+    margin: 2px;
 }
 
 svg {
@@ -164,9 +165,29 @@ svg {
     margin: 40px 100px;
 }
 
+.about-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
 
+.about-contact div {
+    border: 0;
+}
 
+.about-contact h2 {
+    text-align: center;
+    padding-left: 30px;
+}
 
+.about-contact ul {
+    list-style: none;
+}
+
+.about-contact li {
+    text-align: center;
+}
 
 
 
