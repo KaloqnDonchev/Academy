@@ -2,20 +2,26 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #3f2860;
-    border: 0;
-}
-
-html, body, div, img{
-    height: 100%;
+ body{
     margin: 0;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
     border-radius: 7px;
     border: 2px solid #7e93be;
+    background-color: #3f2860;
+    border: 0;
  }
+
+ div {
+    margin: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    border-radius: 7px;
+    border: 2px;
+ }
+
 
  .container {
     background-color: #3f2860;
@@ -55,9 +61,10 @@ header {
 
 .menu li {
     display: inline-block;
-    padding: 3px 18px;
+    padding: 8px 18px;
     border: 1px solid rgb(94, 76, 224);
     border-radius: 7px;
+    font-size: 19px;
 }
 
 a:link, a:visited {
@@ -68,8 +75,15 @@ a:link, a:visited {
 .banner {
     display: flex;
     flex-wrap: wrap;
-    height: 520px;
+    height: 515px;
     margin: 3px;
+}
+
+.banner img {
+   width: 100%;
+   max-height: 515px;
+   border-radius: 7px;
+   border: 2px solid #7e93be;
 }
 
 .title-shoes {
@@ -79,6 +93,9 @@ a:link, a:visited {
     align-items: center;
     background-color: #90c5a9;
     margin: 3px;
+    border-radius: 7px;
+    border: 2px solid #7e93be;
+    font-size: 20px;
 }
 
 .title-shoes h2 {
@@ -92,6 +109,8 @@ a:link, a:visited {
     justify-content: space-around;
     height: 400px;
     background-color: #90c5a9;
+    margin: 0 3px;
+    border-radius: 7px;
 }
 
 .products-shoes div {
@@ -149,13 +168,14 @@ a:link, a:visited {
     height: 120px;
     margin: 2px;
     border-radius: 7px 7px 0 0;
+    border: 2px solid #7e93be;
 }
 
 svg {
     fill: #fa8b60;
     height: 35px;
     width: 35px;
-    margin: 40px 100px;
+    margin: 40px 110px;
 }
 
 .logos img {
@@ -163,7 +183,7 @@ svg {
     filter: invert(85%) sepia(34%) saturate(5193%) hue-rotate(316deg) brightness(98%) contrast(101%);
     height: 35px;
     width: 35px;
-    margin: 40px 100px;
+    margin: 40px 110px;
 }
 
 .about-contact {
@@ -171,9 +191,10 @@ svg {
     flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
-    height: 195px;
+    height: 205px;
     border-radius: 0%;
     margin: 2px;
+    border: 2px solid #7e93be;
 }
 
 .about-contact div {
@@ -193,18 +214,21 @@ svg {
 .about-contact li {
     text-align: center;
     color: #fa8b60;
-    padding: 3px;
+    padding: 4px;
 }
 
 footer {
     border: 2px solid #7e93be;
     border-radius: 0 0 7px 7px;
     margin: 0 2px;
+    background-color: #593d82;
 }
 
 footer p {
     text-align: center;
     color: #aecbbe;
+    padding: 0;
+    margin: 2px;
 }
 
 
