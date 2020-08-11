@@ -1,0 +1,32 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1>Fibonacci Sequence: </h1>
+    <label>The amount of numbers displayed: </label>
+    <input type="number" id="txt-box">
+    <button onclick="fibonacci()">Click here</button>
+    <p id="par"></p>
+    <script>
+        function fibonacci() {
+            var a = 1;
+            var b = 0;
+            var k = 0;
+            var numbers = document.getElementById('txt-box').value;
+            console.log(numbers);
+            var array = [];
+            for (var i = 0; i < numbers; i++) {
+                array.push(a);
+                k = a;
+                a = a + b;
+                b = k;
+            }
+            for (var i = 0; i < array.length; i++) {
+                document.getElementById('par').innerHTML += array[i] + ' ';
+            }
+        }
+    </script>
+</body>
+
+</html>
