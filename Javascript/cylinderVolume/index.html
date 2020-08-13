@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h2>Input radius and height value and get volume of a cylinder</h2>
+    <p>Radius</p> <br>
+    <input type="number" id="radius"> <br>
+    <p>Height</p> <br>
+    <input type="number" id="height"> <br>
+    <p>Volume</p> <br>
+    <input type="number" id="volume" pattern="([0-9]{1,3}).([0-9]{1,3})"> <br>
+    <button onclick="cylinderVolume()">Calculate</button>
+    <script>
+        function cylinderVolume() {
+            const pi = 3.14;
+            var v;
+            var r = document.getElementById('radius').value;
+            var h = document.getElementById('height').value;
+            v = pi * (r * r) * h;
+            console.log(v);
+            document.getElementById('volume').value = v;
+        }
+    </script>
+</body>
+
+</html>
