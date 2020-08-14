@@ -17,17 +17,7 @@
     <p>Volume</p> <br>
     <input type="number" id="volume" pattern="([0-9]{1,3}).([0-9]{1,3})"> <br>
     <button onclick="cylinderVolume()">Calculate</button>
-    <script>
-        function cylinderVolume() {
-            const pi = 3.14;
-            var v;
-            var r = document.getElementById('radius').value;
-            var h = document.getElementById('height').value;
-            v = pi * (r * r) * h;
-            console.log(v);
-            document.getElementById('volume').value = v;
-        }
-    </script>
+    <script src="./cylinderVolume.js"></script>
 </body>
 
 </html>
