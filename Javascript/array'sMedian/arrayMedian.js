@@ -1,11 +1,12 @@
-function arraysMedian() {
-    var stringText = document.getElementById("txt-box").value;
-    var array = stringText.split(",");
+var button = document.getElementById('button');
+button.addEventListener('click', function () {
+    const stringText = document.getElementById("txt-box").value;
+    const array = stringText.split(",");
     for (var i = 0; i < array.length; i++) {
         array[i] = parseInt(array[i], 10);
     }
     var arraySum = [];
-    var diff = 0;
+    let diff = 0;
     for (var i = 0; i < array.length; i++) {
         var sumLeft = 0;
         var sumRight = 0;
@@ -32,4 +33,4 @@ function arraysMedian() {
         }
     }
    document.getElementById("par").innerHTML += index;
-}
+})
