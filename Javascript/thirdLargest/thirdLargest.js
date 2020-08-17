@@ -6,7 +6,7 @@ button.addEventListener('click', function () {
         if (isNaN(element)) {
             document.getElementById('fill').innerHTML = "Wrong input";
             throw new Error();
-            
+
         } else {
             return parseInt(element, 10)
         }
