@@ -1,19 +1,18 @@
-var button = document.getElementById('button');
-button.addEventListener('click', function () {
+function arraysMedian() {
     const stringText = document.getElementById("txt-box").value;
-    const array = stringText.split(",");
-    for (var i = 0; i < array.length; i++) {
+    let array = stringText.split(",");
+    for (let i = 0; i < array.length; i++) {
         array[i] = parseInt(array[i], 10);
     }
-    var arraySum = [];
+    const arraySum = [];
     let diff = 0;
-    for (var i = 0; i < array.length; i++) {
-        var sumLeft = 0;
-        var sumRight = 0;
-        for (var j = 0; j < i; j++) {
+    for (let i = 0; i < array.length; i++) {
+        let sumLeft = 0;
+        let sumRight = 0;
+        for (let j = 0; j < i; j++) {
             sumLeft += array[j];
         }
-        for (var k = j + 1; k < array.length; k++) {
+        for (let k = j + 1; k < array.length; k++) {
             sumRight += array[k];
         }
         if (sumLeft < sumRight) {
@@ -24,9 +23,9 @@ button.addEventListener('click', function () {
             arraySum.push(diff);
         }
     }
-    var index = 0;
-    var lowestValue = arraySum[0];
-    for (var i = 0; i < arraySum.length; i++) {
+    let index = 0;
+    let lowestValue = arraySum[0];
+    for (let i = 0; i < arraySum.length; i++) {
         if (arraySum[i] < lowestValue) {
             lowestValue = arraySum[i];
             index = i;
