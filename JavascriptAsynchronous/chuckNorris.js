@@ -10,13 +10,14 @@ button.addEventListener('click', function () {
             }
         })
         .then(function (myJson) {
-            const jsonString = JSON.stringify(myJson);
-            const myObj = JSON.parse(jsonString);
             const listElement = document.createElement("li");
-            const quote = document.createTextNode(myObj.value);
+            const quote = document.createTextNode(myJson.value);
             listElement.appendChild(quote);
             container.appendChild(listElement);
             const lastAdded = document.querySelector('span');
-            lastAdded.innerHTML = quote.textContent;
-        }) 
-})
+            lastAdded.textContent = quote.textContent;
+        })
+        .catch(() => {
+            throw new Error('Invalid');
+        });
+});
