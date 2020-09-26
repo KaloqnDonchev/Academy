@@ -1,4 +1,4 @@
-var button = document.getElementById('button');
+var button = document.querySelector('.button');
 button.addEventListener('click', function () {
     var stringText = document.getElementById('input').value;
     var stringArray = stringText.split(",");
@@ -13,7 +13,8 @@ button.addEventListener('click', function () {
     })
     var max = Math.max.apply(null, array);
     array.splice(array.indexOf(max), 1);
-    Math.max.apply(null, array);
+    max = Math.max.apply(null, array);
     array.splice(array.indexOf(max), 1);
-    document.getElementById('fill').innerHTML = Math.max.apply(null, array);
+    max = Math.max.apply(null, array);
+    document.getElementById('fill').innerHTML = max;
 })
