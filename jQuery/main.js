@@ -50,14 +50,14 @@ var testExchangeRates = {
 /////					SOLUTIONS					/////
 /////////////////////////////////////////////////////////
 $(document).ready(function () {
-	
 	$(".btn").click(function (event) {
 		event.preventDefault();
-		var fromCurrency = $("#base-currency");
-		var toCurrency = $(".currencies");
-		var metCondition;
-		var symbols = "";
-
+		let fromCurrency = $("#base-currency");
+		let toCurrency = $(".currencies");
+		let metCondition;
+		let symbols = "";
+		let errorMessage = $(".error-message");
+		let newEndpointURL;
 
 		if (fromCurrency[0].selectedIndex > 0) {
 			fromCurrency = fromCurrency[0].options[fromCurrency[0].selectedIndex].text;
@@ -69,38 +69,39 @@ $(document).ready(function () {
 			});
 			if (Boolean(metCondition)) {
 				//selected dropdown and checkboxes
-				for (var i = 1; i < toCurrency.length; i++) {
+				for (let i = 1; i < toCurrency.length; i++) {
 					symbols += "," + toCurrency[i];
 				}
-				endpointURL = endpointURL + "?base=" + fromCurrency + "&symbols=" + symbols.substring(1);
-				$.ajax({ url: endpointURL })
+				newEndpointURL = endpointURL + "?base=" + fromCurrency + "&symbols=" + symbols.substring(1);
+				$.ajax({ url: newEndpointURL })
 					.done((json) => {
 						$(".exchange-rates-container")[0].style.display = "initial"
-						$(".table th")[0].append(" ", json.base);
 						for (let key in json.rates) {
-							$(".table th")[1].append(" ", key, json.rates[key]);
+							$("tbody").append($("<tr></tr>")).append($(`<th>${key}</th>`)).append($(`<th>${json.rates[key]}</th>`));
 						}
 					})
 					.fail(() => {
-						alert("Error");
+						errorMessage[0].style.display = "initial";
+						errorMessage.text("Error, could not find currencies");
 					})
 			} else {
 				//selected dropdown only
-				endpointURL = endpointURL + "?base=" + fromCurrency;
-				$.ajax({ url: endpointURL })
+				newEndpointURL = endpointURL + "?base=" + fromCurrency;
+				$.ajax({ url: newEndpointURL })
 					.done((json) => {
 						$(".exchange-rates-container")[0].style.display = "initial";
-						$(".table th")[0].append(" ", json.base);
 						for (let key in json.rates) {
-							$(".table th")[1].append(" ", key , json.rates[key]);
+							$("tbody").append($("<tr></tr>")).append($(`<th>${key}</th>`)).append($(`<th>${json.rates[key]}</th>`));
 						}
 					})
 					.fail(() => {
-						alert("Error");
+						errorMessage[0].style.display = "initial";
+						errorMessage.text("Error, could not find currency");
 					})
 			}
 		} else {
-			throw new Error("Please choose a currency first");
+			errorMessage[0].style.display = "initial";
+			errorMessage.text("Please choose a currency first");
 		}
 	})
 })
