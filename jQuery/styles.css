@@ -29,3 +29,7 @@
 .results .error-message {
 	display: none;
 }
+
+.show-container{
+	display: initial;
+}
