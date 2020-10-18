@@ -46,6 +46,12 @@ var testExchangeRates = {
 	}
 };
 
+function errorAlert(error) {
+	let errorMessage = $(".error-message");
+	errorMessage.removeClass("results error-message").addClass("show-container");
+	errorMessage.text(error);
+}
+
 
 /////////////////////////////////////////////////////////
 /////					SOLUTIONS					/////
@@ -55,7 +61,6 @@ $(document).ready(function () {
 	let fromCurrency = $("#base-currency");
 	let toCurrency = $(".currencies");
 	let metCondition;
-	let errorMessage = $(".error-message");
 	let newEndpointURL;
 	let temp = [];
 
@@ -63,7 +68,7 @@ $(document).ready(function () {
 		event.preventDefault();
 		
 		if (fromCurrency[0].selectedIndex > 0) {
-			fromCurrency = fromCurrency[0].options[fromCurrency[0].selectedIndex].text;
+			fromCurrency = fromCurrency.find('option:selected').text();
 			$(".currencies .form-check-input").each(function (i, obj) {
 				if (obj.checked) {
 					metCondition = true;
@@ -82,18 +87,16 @@ $(document).ready(function () {
 
 			$.ajax({ url: newEndpointURL })
 				.done((json) => {
-					$(".exchange-rates-container")[0].className = 'show-container';
+					$(".exchange-rates-container").removeClass("results exchange-rates-container").addClass("show-container");
 					for (let key in json.rates) {
 						$("tbody").append($("<tr></tr>")).append($(`<th>${key}</th>`)).append($(`<th>${json.rates[key]}</th>`));
 					}
 				})
 				.fail(() => {
-					errorMessage[0].className = 'show-container';
-					errorMessage.text("Error, could not find currencies");
+					errorAlert("Error, could not find currencies");
 				})
 		} else {
-			errorMessage[0].className = 'show-container';
-			errorMessage.text("Please choose a currency first");
+			errorAlert("Please choose a currency first");
 		}
 	})
 })
