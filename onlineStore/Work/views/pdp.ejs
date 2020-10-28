@@ -1,0 +1,29 @@
+<%- include header.ejs %>
+
+<div class="body-wrapper">
+
+    <ul class="menu">
+        <li>Online shop </li>
+        <li><a href="/mens">Mens</a></li>
+        <li><a href="/womens">Womens</a></li>
+    </ul>
+
+    <a href="/">Home</a>
+    <span>/</span>
+    <a href="/<%= gender %>/<%= subcategoryName %>"><%= subcategoryName %></a>
+    <span>/</span>
+    <a href="<%= name.toLowerCase() %>"><%= name %></a>
+
+
+    <h1><%= name %></h1>
+    <p><%= page_description%></p>
+    <% if (typeof image == 'undefined') { %>
+    <% } else { %>
+        <img src="/images/<%= image %>">
+        <% }%>
+    <a>Buy now</a>
+    <h3>Price: </h3>
+
+</div>
+
+<%- include footer.ejs %>
