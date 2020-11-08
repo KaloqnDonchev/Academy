@@ -1,0 +1,17 @@
+<%- include header.ejs %>
+
+<div class="body-wrapper">
+
+    <% productObj.forEach((product) => { %>
+        <h2><%= product.name %></h2>
+        <% product.image_groups[0].images.forEach((image) => { %>
+            <img src="/images/<%= image.link %>">
+        <% }) %>
+        <p><%= product.page_description %></p>
+        <p><%=product.price %> <%= product.currency %></p>
+        <a href="/product/<%= product.id %>">More info</a>
+    <% }) %>
+
+</div>
+
+<%- include footer.ejs %>

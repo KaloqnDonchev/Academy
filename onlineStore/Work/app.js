@@ -6,17 +6,19 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const expressMongoDb = require('express-mongo-db');
+
 
 const routes = {
   index: require('./routes/index'),
-  gender: require('./routes/gender'),
-  subcategory: require('./routes/subcategory'),
+  categories: require('./routes/categories'),
   pdp: require('./routes/pdp'),
 };
 
 const app = express();
 
 // All environments
+app.use(expressMongoDb('mongodb://localhost:27017/onlineShop'));
 app.set('port', 1666);
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'ejs');
@@ -37,15 +39,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 app.use(express.errorHandler());
 
+
 // App routes
 app.get('/', routes.index);
-app.get('/:gender', routes.gender);
-app.get('/:gender/:subcategory', routes.subcategory);
-app.get('/:gender/:subcategory/:pdp', routes.pdp);
+app.get('/categories/*', routes.categories);
+app.get('/product/:productId', routes.pdp);
 
 
 // Run server
 http.createServer(app).listen(app.get('port'), () => {
-  // eslint-disable-next-line no-console
   console.log(`Express server listening on port ${app.get('port')}`);
 });
