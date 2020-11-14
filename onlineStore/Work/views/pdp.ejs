@@ -3,12 +3,21 @@
 <div class="body-wrapper">
 
 
-    <h1><%= name %></h1>
-    <p><%= page_description %></p>
-    <img src="/images/<%= image_groups[0].images[0].link %>">
-    <a>Buy now</a>
-    <span>Price: <%= price %> <%= currency %></span>
+    <h1 id="headline" ><%= product.name %></h1>
+    <p><%= product.page_description %></p>
+    <img src="/images/<%= product.image_groups[0].images[0].link %>">
+    <p>Price: </p>
+    <ul>
+        <li value="<%= product.price %>" class="price"><%= product.price %> </li>
+        <li class="price-currency"><%= product.currency %></li>
+    </ul>
 
-</div>
+    <select class="currency">
+        <% currencies.forEach((currency) => { %>
+            <option value="<%= currency.Value %>" id="currency-option" name="<%= currency.IDMoneda %>"><%= currency.IDMoneda %></option>
+        <% }) %>
+    </select>
+    
+    </div>
 
 <%- include footer.ejs %>

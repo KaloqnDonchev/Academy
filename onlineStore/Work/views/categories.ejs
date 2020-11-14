@@ -12,6 +12,7 @@
             <% if (subcategory.image) { %>
                 <img src="/images/<%= subcategory.image %>">
             <% } %>
+                <% if(!url) url = category.id %>
                 <a href="/categories/<%= url %>/<%= subcategory.id %>">More Info</a>
         <% }) %>
         

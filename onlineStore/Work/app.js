@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const expressMongoDb = require('express-mongo-db');
+const soap = require('soap');
+const { MongoClient, ObjectId } = require('mongodb');
 
 
 const routes = {
@@ -36,8 +38,10 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/scripts', express.static(__dirname, 'public/scripts'));
 app.use(app.router);
 app.use(express.errorHandler());
+const client = new MongoClient('mongodb://localhost:27017/onlineShop');
 
 
 // App routes
@@ -45,6 +49,18 @@ app.get('/', routes.index);
 app.get('/categories/*', routes.categories);
 app.get('/product/:productId', routes.pdp);
 
+client.connect(() => {
+  const db = client.db('onlineShop');
+  soap.createClient('http://infovalutar.ro/curs.asmx?wsdl', (err, clientSoap) => {
+    clientSoap.lastdateinserted((error, date) => {
+      const latestDate = date.lastdateinsertedResult.toISOString();
+      clientSoap.getall({ dt: latestDate }, (Error, result) => {
+        const currencies = result.getallResult.diffgram.DocumentElement.Currency;
+        db.collection('currencies').update({ _id: ObjectId('5fae71e83f764d0d8c94a8d3') }, { currencies });
+      });
+    });
+  });
+});
 
 // Run server
 http.createServer(app).listen(app.get('port'), () => {

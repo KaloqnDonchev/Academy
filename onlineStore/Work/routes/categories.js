@@ -39,7 +39,7 @@ module.exports = function routeCategory(req, res) {
         if (productObj) {
           res.render('plp', { productObj, url: req.params[0] });
         } else {
-          res.json({ error: 'Product not found' })
+          res.json({ error: 'Product not found' });
         }
       });
   } else {
