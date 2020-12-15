@@ -38,7 +38,6 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use('/scripts', express.static(__dirname, 'public/scripts'));
 app.use(app.router);
 app.use(express.errorHandler());
 const client = new MongoClient('mongodb://localhost:27017/onlineShop');
@@ -53,10 +52,13 @@ client.connect(() => {
   const db = client.db('onlineShop');
   soap.createClient('http://infovalutar.ro/curs.asmx?wsdl', (err, clientSoap) => {
     clientSoap.lastdateinserted((error, date) => {
-      const latestDate = date.lastdateinsertedResult.toISOString();
+      let latestDate = new Date(date.lastdateinsertedResult);
+      latestDate.setHours(latestDate.getHours() + 2);
+      latestDate = latestDate.toISOString();
       clientSoap.getall({ dt: latestDate }, (Error, result) => {
         const currencies = result.getallResult.diffgram.DocumentElement.Currency;
         db.collection('currencies').update({ _id: ObjectId('5fae71e83f764d0d8c94a8d3') }, { currencies });
+        client.close();
       });
     });
   });
