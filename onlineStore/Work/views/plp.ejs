@@ -12,12 +12,12 @@
         <div class=""><p>Filters<span>5</span></p></div>
         <p><i class="arrow arrow-right back-button" style="border-color: white;"></i></p>
     </div>
-    <div class="activity-filter-btn row no-gutters">
+    <div class="activity-filter-btn dropdwn-btn row no-gutters">
         <span class="dot"></span>
         <h3>ACTIVITY</h3>
-        <p><i class="arrow arrow-down"></i></p>
+        <p><i class="arrow arrow-down arrow-dropdown"></i></p>
     </div>
-    <div class="activity-dropdown">
+    <div class="activity-dropdown drpdwn-menu">
         <div>
             <p><i class="check"></i></p>
             <h4>SNOW</h4>
@@ -39,12 +39,12 @@
         <h3>GENDER</h3>
         <p><i class="arrow arrow-down"></i></p>
     </div>
-    <div class="price-filter-btn row no-gutters">
+    <div class="price-filter-btn dropdwn-btn row no-gutters">
         <span class="dot"></span>
         <h3>PRICE</h3>
-        <p><i class="arrow arrow-down"></i></p>
+        <p><i class="arrow arrow-down arrow-dropdown"></i></p>
     </div>
-    <div class="price-dropdown">
+    <div class="price-dropdown drpdwn-menu">
         <p class="min-price-text"></p>
         <p class="max-price-text"></p>
         <div slider id="slider-distance">
@@ -68,7 +68,7 @@
             children[1].style.width=value+'%';
             children[5].style.left=value+'%';
             children[7].style.left=value+'%';children[11].style.left=value+'%';
-            children[11].childNodes[1].innerHTML=this.value;" />
+            document.getElementById('min-price').innerHTML=this.value * 10;" />
         
             <input type="range" tabindex="0" value="60" max="100" min="0" step="1" oninput="
             this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
@@ -77,15 +77,17 @@
             children[3].style.width=(100-value)+'%';
             children[5].style.right=(100-value)+'%';
             children[9].style.left=value+'%';children[13].style.left=value+'%';
-            children[13].childNodes[1].innerHTML=this.value;" />
+            document.getElementById('max-price').innerHTML=this.value * 10;" />
         </div>
+        <p id="min-price">min value: </p>
+        <p id="max-price">max value: </p>
     </div>
-    <div class="color-filter-btn row no-gutters">
+    <div class="color-filter-btn dropdwn-btn row no-gutters">
         <span class="dot"></span>
         <h3>COLOR</h3>
-        <p><i class="arrow arrow-down"></i></p>
+        <p><i class="arrow arrow-down arrow-dropdown"></i></p>
     </div>
-    <div class="color-dropdown">
+    <div class="color-dropdown drpdwn-menu">
         <div class="color-cubes row no-gutters" style="justify-content: space-around; margin: 10px 50px">
             <p class="color-cube-green"></p>
             <p class="color-cube-black"></p>
@@ -94,12 +96,12 @@
             <p class="color-cube-red"></p>
         </div>
     </div>
-    <div class="size-filter-btn row no-gutters">
+    <div class="size-filter-btn dropdwn-btn row no-gutters">
         <span class="dot"></span>
         <h3>SIZE</h3>
-        <p><i class="arrow arrow-down"></i></p>
+        <p><i class="arrow arrow-down arrow-dropdown"></i></p>
     </div>
-    <div class="size-dropdown">
+    <div class="size-dropdown drpdwn-menu">
         <div class="sizes row no-gutters">
             <p>S</p>
             <p>M</p>

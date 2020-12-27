@@ -5494,7 +5494,6 @@ a.thumbnail {
 [slider] {
   position: relative;
   height: 14px;
-  border-radius: 10px;
   text-align: left;
   margin: 45px 0 10px 0; }
 
@@ -5508,7 +5507,6 @@ a.thumbnail {
   position: absolute;
   left: 0;
   height: 14px;
-  border-radius: 10px;
   background-color: #CCC;
   margin: 0 7px; }
 
@@ -5524,21 +5522,18 @@ a.thumbnail {
   position: absolute;
   left: 0;
   height: 14px;
-  border-radius: 14px;
-  background-color: #1ABC9C; }
+  background-color: red; }
 
 [slider] > div > [thumb] {
   position: absolute;
-  top: -7px;
+  top: -14px;
   z-index: 2;
   height: 28px;
-  width: 28px;
+  width: 7px;
   text-align: left;
-  margin-left: -11px;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-  background-color: #FFF;
-  border-radius: 50%;
+  background-color: red;
   outline: none; }
 
 [slider] > input[type=range] {
