@@ -2,6 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-undef */
 
+
 // currency conversion
 const currency = document.querySelector('.currency');
 
@@ -170,19 +171,47 @@ const mySwiper = new Swiper('.swiper-container', {
 // quantity
 
 const countItem = document.querySelector('.count');
-let countItemNumber = parseInt(countItem.innerHTML, 10);
 const countAdd = document.querySelector('.count-add');
 const countSubtr = document.querySelector('.count-subtr');
 
+if (countItem) {
+  let countItemNumber = parseInt(countItem.innerHTML, 10);
 
-countSubtr.addEventListener('click', () => {
-  if (countItemNumber > 1) {
-    countItemNumber -= 1;
+  countSubtr.addEventListener('click', () => {
+    if (countItemNumber > 1) {
+      countItemNumber -= 1;
+      countItem.innerHTML = countItemNumber;
+    }
+  });
+
+  countAdd.addEventListener('click', () => {
+    countItemNumber += 1;
     countItem.innerHTML = countItemNumber;
-  }
+  });
+}
+
+
+// multi range slider
+
+const minRangeHandler = document.querySelector('.min-range-handler');
+const maxRangeHandler = document.querySelector('.max-range-handler');
+
+minRangeHandler.addEventListener('input', () => {
+  minRangeHandler.value = Math.min(minRangeHandler.value, minRangeHandler.parentNode.childNodes[5].value - 1);
+  const value = (100 / (parseInt(minRangeHandler.max) - parseInt(minRangeHandler.min))) * parseInt(minRangeHandler.value) - (100 / (parseInt(minRangeHandler.max) - parseInt(minRangeHandler.min))) * parseInt(minRangeHandler.min);
+  const children = minRangeHandler.parentNode.childNodes[1].childNodes;
+  children[1].style.width = `${value}%`;
+  children[5].style.left = `${value}%`;
+  children[7].style.left = `${value}%`; children[11].style.left = `${value}%`;
+  document.getElementById('min-price').innerHTML = minRangeHandler.value * 10;
 });
 
-countAdd.addEventListener('click', () => {
-  countItemNumber += 1;
-  countItem.innerHTML = countItemNumber;
+maxRangeHandler.addEventListener('input', () => {
+  maxRangeHandler.value = Math.max(maxRangeHandler.value, maxRangeHandler.parentNode.childNodes[3].value - (-1));
+  const value = (100 / (parseInt(maxRangeHandler.max, 10) - parseInt(maxRangeHandler.min))) * parseInt(maxRangeHandler.value) - (100 / (parseInt(maxRangeHandler.max) - parseInt(maxRangeHandler.min))) * parseInt(maxRangeHandler.min);
+  const children = maxRangeHandler.parentNode.childNodes[1].childNodes;
+  children[3].style.width = `${100 - value}%`;
+  children[5].style.right = `${100 - value}%`;
+  children[9].style.left = `${value}%`; children[13].style.left = `${value}%`;
+  document.getElementById('max-price').innerHTML = maxRangeHandler.value * 10;
 });
